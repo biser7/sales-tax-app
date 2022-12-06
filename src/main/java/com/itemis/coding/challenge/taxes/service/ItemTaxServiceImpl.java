@@ -1,6 +1,7 @@
 package com.itemis.coding.challenge.taxes.service;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.itemis.coding.challenge.taxes.model.Item;
 import com.itemis.coding.challenge.taxes.model.Origin;
@@ -8,6 +9,7 @@ import com.itemis.coding.challenge.taxes.model.PreferentialTax;
 import com.itemis.coding.challenge.taxes.model.Receipt;
 import com.itemis.coding.challenge.taxes.model.ShopCart;
 
+@Service
 public class ItemTaxServiceImpl implements ItemTaxService{
   private final double salesTax;
   private final double importDuty;

@@ -1,7 +1,10 @@
 package com.itemis.coding.challenge.taxes.service;
 
+import org.springframework.stereotype.Service;
+
 import com.itemis.coding.challenge.taxes.model.Receipt;
 
+@Service
 public class ReceiptServiceImpl implements ReceiptService {
   private final Receipt receipt;
 
