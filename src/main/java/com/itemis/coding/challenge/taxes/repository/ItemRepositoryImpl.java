@@ -2,6 +2,7 @@ package com.itemis.coding.challenge.taxes.repository;
 
 import java.util.List;
 
+import com.itemis.coding.challenge.taxes.exception.ItemNotFoundException;
 import com.itemis.coding.challenge.taxes.model.Item;
 
 public class ItemRepositoryImpl implements ItemRepository{
@@ -25,6 +26,6 @@ public class ItemRepositoryImpl implements ItemRepository{
       .stream()
       .filter(i -> i.getId() == id)
       .findFirst()
-      .orElseThrow(() -> new RuntimeException(String.format("Not found Item with indicated id: %d", id)));
+      .orElseThrow(() -> new ItemNotFoundException(String.format("Not found Item with indicated id: %d", id)));
   }
 }

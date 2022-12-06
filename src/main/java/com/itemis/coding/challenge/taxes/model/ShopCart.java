@@ -3,6 +3,8 @@ package com.itemis.coding.challenge.taxes.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.itemis.coding.challenge.taxes.exception.ItemNotFoundException;
+
 public class ShopCart {
   private Map<Item, Integer> itemToQuantity;
 
@@ -31,6 +33,6 @@ public class ShopCart {
       .stream()
       .filter(set -> set.getKey().getId() == id)
       .findFirst()
-      .orElseThrow(() -> new RuntimeException(String.format("Not found Item with id: %d", id)));
+      .orElseThrow(() -> new ItemNotFoundException(String.format("Not found Item with id: %d", id)));
   }
 }
