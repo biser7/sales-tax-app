@@ -1,7 +1,13 @@
 package com.itemis.coding.challenge.taxes.service;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,5 +55,23 @@ public class ShopCartServiceImplTest {
     Assertions.assertEquals(2, (int) shopCart.getItemToQuantity().get(book));
     Assertions.assertEquals(2, (int) shopCart.getItemToQuantity().get(musicCd));
     Assertions.assertEquals(3, (int) shopCart.getItemToQuantity().get(chocolateBar));
+  }
+
+  @Test
+  public void whenPrintAllItemsShouldPrintAllCartItems() {
+    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    final PrintStream originalOut = System.out;
+    System.setOut(new PrintStream(outContent));
+
+    ShopCartService shopCartService = new ShopCartServiceImpl(itemRepository, new ShopCart());
+    shopCartService.addItemToShopCart(book.getId(), 1);
+    shopCartService.addItemToShopCart(chocolateBar.getId(), 3);
+
+    shopCartService.printAllItems();
+
+    assertThat(outContent.toString(), CoreMatchers.allOf(
+      containsString(book.toString()),
+      containsString(chocolateBar.toString())));
+    System.setOut(originalOut);
   }
 }

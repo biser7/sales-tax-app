@@ -21,7 +21,8 @@ public class ShopCartServiceImpl implements ShopCartService {
 
   @Override
   public void printAllItems() {
-
+    System.out.println("Products catalogue:");
+    itemRepository.getAllItems().forEach(System.out::println);
   }
 
   @Override
