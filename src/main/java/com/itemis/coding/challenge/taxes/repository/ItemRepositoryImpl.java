@@ -21,6 +21,10 @@ public class ItemRepositoryImpl implements ItemRepository{
 
   @Override
   public Item getItemById(long id) {
-    return null;
+    return itemsList
+      .stream()
+      .filter(i -> i.getId() == id)
+      .findFirst()
+      .orElseThrow(() -> new RuntimeException("Not found Item with indicated id"));
   }
 }
