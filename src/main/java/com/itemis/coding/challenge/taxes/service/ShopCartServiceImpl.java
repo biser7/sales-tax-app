@@ -27,7 +27,13 @@ public class ShopCartServiceImpl implements ShopCartService {
 
   @Override
   public void printCartItems() {
-
+    if (shopCart.getItemToQuantity().isEmpty()) {
+      System.out.println("Shop Cart is empty!");
+      return;
+    }
+    System.out.println("Products in Shop cart:");
+    shopCart.getItemToQuantity().forEach((i, q) -> System.out.printf("> %d %s at %.2f\n", q,
+      i.getName(), i.getNetPrice()));
   }
 
   @Override

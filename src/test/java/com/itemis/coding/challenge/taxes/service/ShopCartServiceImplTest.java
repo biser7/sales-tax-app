@@ -10,6 +10,8 @@ import java.util.List;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import com.itemis.coding.challenge.taxes.model.Item;
@@ -72,6 +74,20 @@ public class ShopCartServiceImplTest {
     assertThat(outContent.toString(), CoreMatchers.allOf(
       containsString(book.toString()),
       containsString(chocolateBar.toString())));
+    System.setOut(originalOut);
+  }
+
+  @Test
+  public void whenPrintAllItemsAndCartIsEmptyShouldPrintSpecificSentence() {
+    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    final PrintStream originalOut = System.out;
+    System.setOut(new PrintStream(outContent));
+    ShopCartService shopCartService = new ShopCartServiceImpl(itemRepository, new ShopCart());
+
+    shopCartService.printCartItems();
+
+    assertThat(outContent.toString(), CoreMatchers.allOf(
+      containsString("Shop Cart is empty!")));
     System.setOut(originalOut);
   }
 }
