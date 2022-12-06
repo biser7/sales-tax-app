@@ -1,5 +1,7 @@
 package com.itemis.coding.challenge.taxes.service;
 
+import java.util.stream.LongStream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -38,7 +40,14 @@ public class ShopCartServiceImpl implements ShopCartService {
 
   @Override
   public void printItemsByIds(long... id) {
-
+    LongStream.of(id).forEach(i -> {
+      if (shopCart.isShopCartContainItem(i)) {
+        System.out.println(shopCart.getItemEntryById(i).getKey().toString() + " --> "
+          + shopCart.getItemEntryById(i).getValue());
+      } else {
+        LOGGER.warn("Not found Item with id");
+      }
+    });
   }
 
   @Override

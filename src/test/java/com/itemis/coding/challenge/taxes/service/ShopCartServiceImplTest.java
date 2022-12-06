@@ -90,4 +90,21 @@ public class ShopCartServiceImplTest {
       containsString("Shop Cart is empty!")));
     System.setOut(originalOut);
   }
+
+  @Test
+  public void whenPrintItemsByIdsShouldPrintShopCartItems() {
+    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    final PrintStream originalOut = System.out;
+    System.setOut(new PrintStream(outContent));
+    ShopCartService shopCartService = new ShopCartServiceImpl(itemRepository, new ShopCart());
+    shopCartService.addItemToShopCart(book.getId(), 1);
+    shopCartService.addItemToShopCart(chocolateBar.getId(), 3);
+
+    shopCartService.printItemsByIds(1, 3);
+
+    assertThat(outContent.toString(), CoreMatchers.allOf(
+      containsString(book.toString()),
+      containsString(chocolateBar.toString())));
+    System.setOut(originalOut);
+  }
 }
