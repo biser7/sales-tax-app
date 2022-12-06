@@ -45,14 +45,15 @@ public class ReceiptServiceImplTest {
 
   @Test
   public void whenPrintReceiptShouldFulfillPrinting() {
-    ItemTaxService itemTaxService = new ItemTaxServiceImpl(10,5,0.05);
+    ItemTaxService itemTaxService = new ItemTaxServiceImpl(10, 5, 0.05);
     ShopCart shopCart = new ShopCart();
     shopCart.getItemToQuantity().put(book, 1);
     shopCart.getItemToQuantity().put(musicCd, 1);
     shopCart.getItemToQuantity().put(chocolateBar, 1);
 
     Receipt receipt = itemTaxService.calculateTaxes(shopCart);
-    ReceiptService receiptService = new ReceiptServiceImpl(receipt);
+    ReceiptService receiptService = new ReceiptServiceImpl(receipt,
+      new ShopCartServiceImpl(itemRepository, shopCart));
     receiptService.printReceipt();
 
     assertThat(outContent.toString(), CoreMatchers.allOf(
