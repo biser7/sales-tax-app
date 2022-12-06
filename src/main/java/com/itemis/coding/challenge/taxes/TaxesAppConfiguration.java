@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import com.itemis.coding.challenge.taxes.model.Item;
 import com.itemis.coding.challenge.taxes.model.Origin;
 import com.itemis.coding.challenge.taxes.model.PreferentialTax;
+import com.itemis.coding.challenge.taxes.model.ShopCart;
 import com.itemis.coding.challenge.taxes.repository.ItemRepositoryImpl;
 
 @Configuration
@@ -16,6 +17,11 @@ public class TaxesAppConfiguration {
   @Bean
   public Item item() {
     return new Item();
+  }
+
+  @Bean
+  public ShopCart shopCart() {
+    return new ShopCart();
   }
 
   @Bean

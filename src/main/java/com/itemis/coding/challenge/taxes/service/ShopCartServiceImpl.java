@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.itemis.coding.challenge.taxes.model.Item;
 import com.itemis.coding.challenge.taxes.model.ShopCart;
 import com.itemis.coding.challenge.taxes.repository.ItemRepository;
 
@@ -35,7 +36,12 @@ public class ShopCartServiceImpl implements ShopCartService {
 
   @Override
   public void addItemToShopCart(long id, int quantity) {
-
+    Item item = itemRepository.getItemById(id);
+    if (shopCart.isShopCartContainItem(item.getId())) {
+      shopCart.getItemToQuantity().put(item, shopCart.getItemToQuantity().get(item) + quantity);
+    } else {
+      shopCart.getItemToQuantity().put(item, quantity);
+    }
   }
 
   @Override

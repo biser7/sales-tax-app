@@ -37,13 +37,17 @@ public class ShopCartServiceImplTest {
 
   @Test
   public void whenAddItemToShopCartThenShopCartContainsAddedItems() {
-    ShopCartService shopCartService = new ShopCartServiceImpl(new ItemRepositoryImpl(), new ShopCart());
+    ShopCartService shopCartService = new ShopCartServiceImpl(itemRepository, new ShopCart());
 
     shopCartService.addItemToShopCart(book.getId(), 1);
     shopCartService.addItemToShopCart(musicCd.getId(), 2);
     shopCartService.addItemToShopCart(chocolateBar.getId(), 3);
+    shopCartService.addItemToShopCart(book.getId(), 1);
     ShopCart shopCart = shopCartService.getShopCart();
 
-    Assertions.assertNotNull(shopCart);
+    Assertions.assertEquals(3, shopCart.getItemToQuantity().size());
+    Assertions.assertEquals(2, (int) shopCart.getItemToQuantity().get(book));
+    Assertions.assertEquals(2, (int) shopCart.getItemToQuantity().get(musicCd));
+    Assertions.assertEquals(3, (int) shopCart.getItemToQuantity().get(chocolateBar));
   }
 }

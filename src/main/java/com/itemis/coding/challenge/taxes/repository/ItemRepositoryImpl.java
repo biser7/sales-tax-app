@@ -25,6 +25,6 @@ public class ItemRepositoryImpl implements ItemRepository{
       .stream()
       .filter(i -> i.getId() == id)
       .findFirst()
-      .orElseThrow(() -> new RuntimeException("Not found Item with indicated id"));
+      .orElseThrow(() -> new RuntimeException(String.format("Not found Item with indicated id: %d", id)));
   }
 }
