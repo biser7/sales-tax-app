@@ -34,4 +34,16 @@ public class ShopCartServiceImplTest {
     Assertions.assertNotNull(shopCartService.getShopCart());
     Assertions.assertEquals(ShopCart.class, shopCartService.getShopCart().getClass());
   }
+
+  @Test
+  public void whenAddItemToShopCartThenShopCartContainsAddedItems() {
+    ShopCartService shopCartService = new ShopCartServiceImpl(new ItemRepositoryImpl(), new ShopCart());
+
+    shopCartService.addItemToShopCart(book.getId(), 1);
+    shopCartService.addItemToShopCart(musicCd.getId(), 2);
+    shopCartService.addItemToShopCart(chocolateBar.getId(), 3);
+    ShopCart shopCart = shopCartService.getShopCart();
+
+    Assertions.assertNotNull(shopCart);
+  }
 }
