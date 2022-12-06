@@ -10,6 +10,8 @@ import java.util.List;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import com.itemis.coding.challenge.taxes.model.Item;
@@ -34,6 +36,8 @@ public class ShopCartServiceImplTest {
   }
 
   @Test
+  @Tag("ShopCartServiceImplTest")
+  @DisplayName("GetShopCart should return ShopCart entity")
   public void whenGetShopCartShouldReturnShopCart() {
     ShopCartService shopCartService = new ShopCartServiceImpl(itemRepository, new ShopCart());
 
@@ -42,6 +46,8 @@ public class ShopCartServiceImplTest {
   }
 
   @Test
+  @Tag("ShopCartServiceImplTest")
+  @DisplayName("GetShopCart should return items list")
   public void whenAddItemToShopCartThenShopCartContainsAddedItems() {
     ShopCartService shopCartService = new ShopCartServiceImpl(itemRepository, new ShopCart());
 
@@ -58,6 +64,8 @@ public class ShopCartServiceImplTest {
   }
 
   @Test
+  @Tag("ShopCartServiceImplTest")
+  @DisplayName("Print all items")
   public void whenPrintAllItemsShouldPrintAllCartItems() {
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     final PrintStream originalOut = System.out;
@@ -76,6 +84,8 @@ public class ShopCartServiceImplTest {
   }
 
   @Test
+  @Tag("ShopCartServiceImplTest")
+  @DisplayName("Print items list should return specific message for empty ShopCart")
   public void whenPrintAllItemsAndCartIsEmptyShouldPrintSpecificSentence() {
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     final PrintStream originalOut = System.out;
@@ -90,6 +100,8 @@ public class ShopCartServiceImplTest {
   }
 
   @Test
+  @Tag("ShopCartServiceImplTest")
+  @DisplayName("Print items by its id")
   public void whenPrintItemsByIdsShouldPrintShopCartItems() {
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     final PrintStream originalOut = System.out;
