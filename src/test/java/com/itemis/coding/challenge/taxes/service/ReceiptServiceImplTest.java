@@ -10,7 +10,11 @@ import java.util.List;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import com.itemis.coding.challenge.taxes.model.Item;
 import com.itemis.coding.challenge.taxes.model.Origin;
@@ -44,6 +48,9 @@ public class ReceiptServiceImplTest {
   }
 
   @Test
+  @Tag("ReceiptServiceImplTest")
+  @EnabledOnOs({OS.WINDOWS, OS.LINUX})
+  @DisplayName("Print Receipt")
   public void whenPrintReceiptShouldFulfillPrinting() {
     ItemTaxService itemTaxService = new ItemTaxServiceImpl(10, 5, 0.05);
     ShopCart shopCart = new ShopCart();

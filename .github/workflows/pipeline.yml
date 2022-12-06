@@ -1,0 +1,13 @@
+name: Sales Taxes App
+on: push
+jobs:
+  build:
+    name: Build project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Generate
+        uses: skx/github-action-build@master
+        with:
+          builder: .github/build

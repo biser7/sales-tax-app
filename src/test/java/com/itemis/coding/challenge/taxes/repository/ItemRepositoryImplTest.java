@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import com.itemis.coding.challenge.taxes.model.Item;
@@ -25,11 +27,15 @@ public class ItemRepositoryImplTest {
   }
 
   @Test
+  @Tag("ItemRepositoryImplTest")
+  @DisplayName("Items existence check")
   public void whenCallGetItemListShouldReturnNotNull() {
     Assertions.assertNotNull(itemRepository.getAllItems());
   }
 
   @Test
+  @Tag("ItemRepositoryImplTest")
+  @DisplayName("Get items should return list")
   public void whenCallGetItemListShouldReturnItemsList() {
     List<Item> items = itemRepository.getAllItems();
 

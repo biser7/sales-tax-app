@@ -2,6 +2,8 @@ package com.itemis.coding.challenge.taxes.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import com.itemis.coding.challenge.taxes.model.Item;
@@ -35,6 +37,8 @@ public class ItemTaxServiceImplTest {
   }
 
   @Test
+  @Tag("ItemTaxServiceImplTest")
+  @DisplayName("Calculate receipt for the first items list")
   public void whenCalculateTaxesForFirstInputShouldReturnFirstReceipt() {
     ItemTaxService itemTaxService = new ItemTaxServiceImpl(10,5,0.05);
     ShopCart shopCart = new ShopCart();
@@ -53,6 +57,8 @@ public class ItemTaxServiceImplTest {
   }
 
   @Test
+  @Tag("ItemTaxServiceImplTest")
+  @DisplayName("Calculate receipt for the second items list")
   public void whenCalculateTaxesForSecondInputShouldReturnSecondReceipt() {
     ItemTaxService itemTaxService = new ItemTaxServiceImpl(10,5,0.05);
     ShopCart shopCart = new ShopCart();
@@ -69,6 +75,8 @@ public class ItemTaxServiceImplTest {
   }
 
   @Test
+  @Tag("ItemTaxServiceImplTest")
+  @DisplayName("Calculate receipt for the third items list")
   public void whenCalculateTaxesForThirdInputShouldReturnThirdReceipt() {
     ItemTaxService itemTaxService = new ItemTaxServiceImpl(10,5,0.05);
     ShopCart shopCart = new ShopCart();
