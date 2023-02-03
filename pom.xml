@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<!--     Sonarcloud-->
-<!--		<sonar.projectKey>biser7_sales-tax-app</sonar.projectKey>-->
+		<sonar.projectKey>biser7_sales-tax-app</sonar.projectKey>
 		<sonar.organization>biser7</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
